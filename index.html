@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Invitation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ffafbd, #ffc3a0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #e63946;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .question {
+            margin: 20px 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #d62839;
+        }
+
+        .buttons {
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #d62839;
+            transform: scale(1.05);
+        }
+
+        #responseMessage {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 0, 0, 0.5);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            opacity: 0.5;
+            animation: float 3s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 Be my Valentine 💖</h1>
+        <p>Dear Alexis Marbella,</p>
+        <div class="question">
+            <p> <strong> Can I take you out on a Date? </strong> </p>
+            <p>February 14, 2025. 2PM</p>
+        </div>
+        <div class="buttons">
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+        </div>
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        // Function to create hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            const size = Math.random() * 20 + 10; // Random size between 10px and 30px
+            heart.style.width = `${size}px`;
+            heart.style.height = `${size}px`;
+            heart.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            heart.style.top = `${Math.random() * 100}vh`; // Random vertical position
+            document.body.appendChild(heart);
+
+            // Remove heart after some time
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Remove after 5 seconds
+        }
+
+        // Create multiple hearts
+        for (let i = 0; i < 30; i++) { // Change the number for more or fewer hearts
+            createHeart();
+        }
+
+        document.getElementById('yesButton').addEventListener('click', function() {
+            document.getElementById('responseMessage').innerText = "Yehey! Can't wait to see you! 💖";
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            document.getElementById('responseMessage').innerText = "Di pwede, magkikita tayo 2pm sa ayaw at sa gusto mo. 😊";
+        });
+    </script>
+</body>
+</html>
